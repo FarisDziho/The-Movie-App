@@ -1,11 +1,27 @@
-.listedItem{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
-    width: 300px;
+.listedShow{
+  cursor: pointer;
+  border-radius: 10px;
 
-    img{
-      height: 2oopx;
-      width: 100%;
-    }
+  .showContainer{
+      display: flex;
+      flex-direction: column;
+      height: 350px;
+      
+      .imgContainer{
+        width: 100%;
+        height: 80%;
+
+        img{
+          height: 100%;
+          width: 100%;
+          border-radius: 10px;
+        }
+      }
+
+      .showName{
+        color:white;
+        font-size: 20px;
+
+      }
+  }
 }

@@ -1,0 +1,54 @@
+.listedItemsContainer{
+    // display: flex;
+    // flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(200px,1fr));
+    grid-gap:20px;
+  }
+  
+  .wrapper{
+    .tabButtonnContainer{
+      margin-bottom: 20px;
+  
+      .button{
+        margin-right: 15px;
+        padding: 7px 20px;
+        background-color: transparent;
+        color: cyan;
+        border:1px solid cyan;
+        border-radius: 10px;
+        outline: none;
+        font-size: 18px;
+        cursor: pointer;
+  
+      }
+  
+      .activeTab{
+        color:crimson;
+      }
+    }
+    .searchInputContainer{
+      width: 100%;
+  
+      input{
+        width: 100%;
+        border:1px solid rgb(5, 187, 187);
+        padding:0 0 0 10px;
+        border-radius: 10px;
+        outline:none;
+        height: 40px;
+        line-height: 40px;
+        background-color: transparent;
+        color:white;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+    }
+  
+    .progressIndicatorContainer{
+      position: fixed;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+    }
+  }

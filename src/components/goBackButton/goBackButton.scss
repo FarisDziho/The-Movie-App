@@ -1,0 +1,18 @@
+.goBackButton{
+    margin-bottom: 20px;
+    text-justify: center;
+
+    h1{
+        cursor: pointer;
+        color:cyan;
+        align-content: center;
+        display: inline-block;
+
+        span{
+            margin-left: 10px;
+            color:cyan;
+            position: relative;
+            top:-3px;
+        }
+    }
+}

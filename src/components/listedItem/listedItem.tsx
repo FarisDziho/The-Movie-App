@@ -1,33 +1,53 @@
 import React from 'react'
-import { Movie, tvShow } from '../../interfaces/interfaces'
+import { Movie, tvShow } from '../../types/interfaces'
 import './listedItem.scss'
 import placeholderImage from '../../assets/moviePlacholder.png';
-import { type } from 'node:os';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedShow } from '../../store/actions/showActions';
+import { useHistory } from 'react-router';
+import { AppState } from '../../store/store';
 
 interface ListedItemProps{
     movie:Movie | tvShow
-    base_url:string | undefined
-    poster_size:string | undefined
-    
 }
 
-export const ListedItem = ({movie,base_url,poster_size}:ListedItemProps) =>{
+export const ListedItem = ({movie}:ListedItemProps) =>{
 
-    const img = poster_size ? base_url + poster_size + movie.poster_path:placeholderImage; 
+    const base_url = useSelector((state:AppState) => state.showReducer.configApi?.images.base_url)
+
+
+    const img = base_url + 'w780' + movie.poster_path; 
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    function onSelectedShow (){
+        dispatch(setSelectedShow(movie))
+        
+        history.push({pathname:"/detailView",state:movie})
+    }
 
     return (
-        <div className="listedItem">
+        <div className="listedShow" onClick={onSelectedShow}>
             {
                 'title' in movie ?(
-                    <div>
-                        <img src={img} alt={movie.title}/>
-                        <span>{movie.title}</span>
+                    <div className="showContainer">
+                        <div className="imgContainer">
+                            <img src={img} alt="" onError ={e => e.currentTarget.src = placeholderImage}/>
+                        </div>
+                        <div className="showName">
+                            <span>{movie.title}</span>
+                        </div>
                     </div>
                 ):(
-                    <>
-                        <img src={img} alt={movie.name}/>
-                        <span>{movie.name}</span>
-                    </>
+                    <div className="showContainer">
+                        <div className="imgContainer">
+                            <img src={img} alt="" onError ={e => e.currentTarget.src = placeholderImage}/>
+                        </div>
+                        <div className="showName">
+                            <span>{movie.name}</span>
+                        </div>
+                    </div>
                 )
             }
         </div>
